@@ -8,7 +8,7 @@ const counterInitialize = () => {
 
 function App() {
    // if we put like this it will trigger every time when components re rendered
-  // const [counter, setCounter] = useState(6);
+  // const [counter, setCounter] = useState(counterInitialize());
   // or suppose you want to run only the components initialize period we passed as arrow functions
   const [counter, setCounter] = useState(() => {
     console.log('asdffffffffff'); // it called only one time
