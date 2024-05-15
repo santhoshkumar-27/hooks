@@ -1,8 +1,20 @@
 import './App.css';
 import { useState } from 'react';
 
+const counterInitialize = () => {
+  console.log('asdffffffffff'); // it called only one time
+  return 6
+}
+
 function App() {
-  const [counter, setCounter] = useState(6)
+   // if we put like this it will trigger every time when components re rendered
+  // const [counter, setCounter] = useState(6);
+  // or suppose you want to run only the components initialize period we passed as arrow functions
+  const [counter, setCounter] = useState(() => {
+    console.log('asdffffffffff'); // it called only one time
+    return 6
+  });
+
 
   function decrement() {
     // setCounter(counter - 1); // 5
