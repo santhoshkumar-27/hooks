@@ -1,23 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+  const [counter, setCounter] = useState(6)
+
+  function decrement() {
+    // setCounter(counter - 1); // 5
+    // // the current state will have to not updated here so we get 6
+    // setCounter(counter - 1);
+
+    // if you want to update the state based on the current state
+    setCounter((prevValue) => prevValue - 1)
+    // it will gives the current updated value
+    // setCounter((prevValue) => prevValue - 1)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={decrement}>-</button>
+      <span>{counter}</span>
+      <button>+</button>
     </div>
   );
 }
