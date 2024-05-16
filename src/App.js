@@ -15,6 +15,12 @@ function App() {
     return 6
   });
 
+  // for a complex data structure
+  const [data, setData] = useState(() => ({theme: 'dark', value: 1}));
+  // in order to avoid this
+  // we need to use seperate state 
+
+  console.log('data', data)
 
   function decrement() {
     // setCounter(counter - 1); // 5
@@ -23,6 +29,9 @@ function App() {
 
     // if you want to update the state based on the current state
     setCounter((prevValue) => prevValue - 1)
+
+    // if i need to update particular property, we need to provided whole set of data
+    setData(prev => ({...prev, theme: 'blue'}))
     // it will gives the current updated value
     // setCounter((prevValue) => prevValue - 1)
   }
@@ -31,6 +40,7 @@ function App() {
     <div className="App">
       <button onClick={decrement}>-</button>
       <span>{counter}</span>
+      <span>{data.theme}</span>
       <button>+</button>
     </div>
   );
