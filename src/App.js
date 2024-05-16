@@ -4,10 +4,14 @@ import { useState, useEffect } from 'react';
 function App() {
   const [resourceType, setResourceType] = useState(() => 'posts')
 
+  // if we put as a dependices, once the changed the side effects will triggerd
   useEffect(() => {
-    console.log('this', resourceType)
+    console.log('changed', resourceType)
   }, [resourceType])
-
+  // But if you want do only mount time we need to use 
+  // useEffect(() => {
+  //   console.log('mount', resourceType)
+  // }, [])
   return (
     <div>
       <div>
