@@ -18,7 +18,10 @@ function App() {
   // for a complex data structure
   const [data, setData] = useState(() => ({theme: 'dark', value: 1}));
   // in order to avoid this
-  // we need to use seperate state 
+  // we need to use seperate state like this
+  const [value, setvalue] = useState(() => 1);
+  const [theme, settheme] = useState(() => 'dark');
+
 
   console.log('data', data)
 
@@ -34,6 +37,8 @@ function App() {
     setData(prev => ({...prev, theme: 'blue'}))
     // it will gives the current updated value
     // setCounter((prevValue) => prevValue - 1)
+
+    
   }
 
   return (
