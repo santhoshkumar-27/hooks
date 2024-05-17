@@ -3,13 +3,13 @@ import { useState, useEffect } from 'react';
 
 function App() {
   const [resourceType, setResourceType] = useState(() => 'posts')
-
+  const [data, setData] = useState(() => '');
   // if we put as a dependices, once the changed the side effects will triggerd
   useEffect(() => {
     console.log('changed', resourceType)
     fetch(`https://jsonplaceholder.typicode.com/${resourceType}`)
       .then(response => response.json())
-      .then(json => console.log(json))
+      .then(json => setData(JSON.stringify(json)))
   }, [resourceType])
   // But if you want do only mount time we need to use 
   // useEffect(() => {
@@ -27,6 +27,7 @@ function App() {
       <h3>
         {resourceType}
       </h3>
+      <p>{data}</p>
     </div>
   );
 }
