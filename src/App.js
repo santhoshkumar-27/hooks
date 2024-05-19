@@ -1,17 +1,16 @@
 import './App.css';
-import React from 'react';
-import { FunctionContextComponent } from './FunctionContextComponent';
-import ThemeCustomProvider from './ThemeCustomContext';
+import React, { useState } from 'react';
 
 
 function App() {
-
+  const [state, setState] = useState(() => '');
   return (
-    <ThemeCustomProvider>
+    <>
+      <input value={state} onChange={e => setState(e.target.value)}/>
       <div>
-        <FunctionContextComponent />
+        My name is {state}
       </div>
-    </ThemeCustomProvider>
+    </>
   );
 }
 
