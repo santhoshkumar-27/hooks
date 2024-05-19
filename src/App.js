@@ -1,6 +1,7 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
 import {ClassContextComponet} from './ClassContextComponent';
+import {FunctionContextComponent} from './FunctionContextComponent';
 export const ThemeContext = React.createContext();
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
     </div>
     <div>
       <ClassContextComponet />
+      <FunctionContextComponent />
     </div>
     </ThemeContext.Provider>
   );
