@@ -1,28 +1,17 @@
 import './App.css';
-import React, { useState, useEffect } from 'react';
-import {ClassContextComponet} from './ClassContextComponent';
-import {FunctionContextComponent} from './FunctionContextComponent';
-export const ThemeContext = React.createContext();
+import React from 'react';
+import { FunctionContextComponent } from './FunctionContextComponent';
+import ThemeCustomProvider from './ThemeCustomContext';
+
 
 function App() {
 
-  const [theme, setTheme] = useState(() => false)
-
-  function toggle() {
-    setTheme(preValue => !preValue)
-  }
-
   return (
-    <ThemeContext.Provider value={theme}>
-
-    <div>
-        <button onClick={toggle}>Toggle</button>
-    </div>
-    <div>
-      <ClassContextComponet />
-      <FunctionContextComponent />
-    </div>
-    </ThemeContext.Provider>
+    <ThemeCustomProvider>
+      <div>
+        <FunctionContextComponent />
+      </div>
+    </ThemeCustomProvider>
   );
 }
 
