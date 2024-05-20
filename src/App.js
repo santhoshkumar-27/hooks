@@ -2,7 +2,7 @@ import './App.css';
 import React, { useEffect, useState, useRef } from 'react';
 
 /*
-  Main concept of the ref is the reference the element
+  Main concept of the ref is the reference the element and ti does'nt tigger the componnet render r
 */
 
 function App() {
