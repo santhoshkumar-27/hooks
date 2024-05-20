@@ -1,6 +1,9 @@
 import './App.css';
 import React, { useEffect, useState, useRef } from 'react';
 
+/*
+  Main concept of the ref is the reference the element
+*/
 
 function App() {
   const [state, setState] = useState(() => '');
