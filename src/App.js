@@ -1,14 +1,14 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 
 /*
-  Main concept of the ref is the reference the element and ti does'nt tigger the componnet render r
+ Use memorization it does cache the value of input because if same input pass over, it gives same input so in order
 */
 
 function App() {
   const [number, setNumber] = useState(() => 0);
   const [dark, setDark] = useState(() => false);
-  const doubleNumbers = doubleNumber(number)
+  const doubleNumbers = useMemo(() => doubleNumber(number), [number])
   const themeStyles = {
     backgroundColor: dark ? 'black' : 'white',
     color: dark ? 'white' : 'black'
