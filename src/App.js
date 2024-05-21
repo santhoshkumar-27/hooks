@@ -9,6 +9,8 @@ function App() {
   const list_size = 2000;
 
   function onChange(value) {
+    setList([])
+
     setState(value)
 
     let l = [];
@@ -18,9 +20,17 @@ function App() {
 
     setList(l)
   }
+
+  // updated state called all combined once so they can wait for all the setupdated to compledted,
+  // by default all the state updated has the high priority so all the set updated take at one time and doing re render the view
   return (
     <div>
       <input type="text" name="sdfasf" id="asdf" value={state} onChange={(e) => onChange(e.target.value)} />
+      <div>
+        <ul>{
+            list.map((li, i) => <li key={i}>{li}</li>)
+          }</ul>
+      </div>
     </div>
   );
 }
