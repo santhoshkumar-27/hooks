@@ -1,31 +1,25 @@
 import './App.css';
-import React, { useState, useCallback } from 'react';
-import { List } from './List';
+import React, { useState } from 'react';
 
-/*
- Use callback it same as useMemo but what it does means it doesn't create a new function reference every time re render
-*/
-// when were the rerendering happening means we reinitial from the start of components
 function App() {
   const [number, setNumber] = useState(() => 0);
-  const [dark, setDark] = useState(() => false);
-  const getItems = useCallback((incr) => [number + incr, number + 1 + incr, number + 2 + incr], [number]);
-  // use callback create a items only when specific input changes not when re render doing, for normal without these
-  // we getItems reference will created evey items, when particular dependency changed or some other changes
 
-  const themeStyles = {
-    backgroundColor: dark ? 'black' : 'white',
-    color: dark ? 'white' : 'black'
+  function increment() {
+    setNumber(prev => prev + 1);
   }
-  // it triggers every time when re rendering happening, 
-  // because it create new reference every time
+
+  function decrement() {
+    setNumber(prev => prev - 1);
+  }
   return (
-    <div style={themeStyles}>
-      <input value={number} type='number' onChange={e => setNumber(parseInt(e.target.value || 0))} />
+    <div>
 
-      <button onClick={() => setDark(prev => !prev)}>toggle theme</button>
+    
+    <button onClick={increment}>+</button>
+    <span>{number}</span>
+    <button onClick={decrement}>-</button>
 
-      <List getItems={getItems} />
+
     </div>
   );
 }
