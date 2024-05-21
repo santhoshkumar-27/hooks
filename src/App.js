@@ -13,12 +13,14 @@ function App() {
 
     setState(value)
 
-    let l = [];
-    for (let i = 1; i < list_size; i++) {
-      l.push(value);
-    }
-
-    setList(l)
+    startTansistions(() => {
+      let l = [];
+      for (let i = 1; i < list_size; i++) {
+        l.push(value);
+      }
+  
+      setList(l)
+    })
   }
 
   // updated state called all combined once so they can wait for all the setupdated to compledted,
@@ -28,7 +30,7 @@ function App() {
       <input type="text" name="sdfasf" id="asdf" value={state} onChange={(e) => onChange(e.target.value)} />
       <div>
         <ul>{
-            list.map((li, i) => <li key={i}>{li}</li>)
+            isPending ? 'New list loading' :list.map((li, i) => <li key={i}>{li}</li>)
           }</ul>
       </div>
     </div>
