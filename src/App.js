@@ -13,18 +13,13 @@ function App() {
   }
   return (
     <div>
-
-    
-    <button onClick={increment}>+</button>
-    <span>{number}</span>
-    <button onClick={decrement}>-</button>
-
-
+      <button onClick={increment}>+</button>
+      <span>{number}</span>
+      <button onClick={decrement}>-</button>
     </div>
   );
 }
 
-// useMemo it takes a function and return a value
-// useCallback it returns the functions not the whole value, later in these application we call these functions, along with that parameters
-
+// useState to update and manage the rerender of the component
+// useReducer is same as but it as concrete way to handle complex state logic over here
 export default App;
