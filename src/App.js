@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 
 /*
  Use memorization it does cache the value of input because if same input pass over, it gives same input so in order
@@ -9,12 +9,15 @@ function App() {
   const [number, setNumber] = useState(() => 0);
   const [dark, setDark] = useState(() => false);
   const doubleNumbers = useMemo(() => doubleNumber(number), [number])
-  const themeStyles = {
+  const themeStyles = useMemo(() => ({
     backgroundColor: dark ? 'black' : 'white',
     color: dark ? 'white' : 'black'
-  }
-
-  // it only access the element
+  }), [dark])
+  useEffect(() => {
+    console.log('theme changed')
+  }, [themeStyles])
+  // it triggers every time when re rendering happening, 
+  // because it create new reference every time
   return (
     <>
       <input value={number} onChange={e => setNumber(parseInt(e.target.value || 0))} />
