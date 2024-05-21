@@ -1,45 +1,77 @@
+/* eslint-disable eqeqeq */
 import './App.css';
-import React, { useReducer } from 'react';
+import React, { useReducer, useState } from 'react';
 
 const ACTIONS = {
-  INCREMENT: 'increment',
-  DECREMENT: 'decrement'
+  ADD_TODO: 'add-todo',
+  TOGGLE_TODO: 'toggle-todo',
+  DELETE_TODO: 'delete-todo'
 }
 
 function reducer(state, action) {
   switch (action.type) {
-    case ACTIONS.INCREMENT:
-      return { count: state.count + 1 };
-    case ACTIONS.DECREMENT:
-      return { count: state.count - 1 };
+    case ACTIONS.ADD_TODO:
+      return [...state, newTodo(action.payload.name)]
+    case ACTIONS.TOGGLE_TODO:
+      return state.map((li) => {
+        if (li.id == action.payload.id) {
+          return {...li, completed: !li.completed}
+        }
+        return li;
+      })
+    case ACTIONS.DELETE_TODO:
+      return state.filter((li) => li.id != action.payload.id)
     default:
-      return { ...state }
+      return state;
+  }
+}
+
+function newTodo(name) {
+  return {
+    id: Date.now(),
+    name,
+    completed: false,
   }
 }
 
 function App() {
-  const [state, dispatch] = useReducer(reducer, { count: 0 });
-  // since we object we use state, if use primitive value use related identifier name like count, know we are use
-  // state here
-  // dispatch funtion dispatch the action to the reducer, reducer function takes two arguments current state, and actions
-  // actions as two properties one is type and another one is value that needs to updated in the state and return new state
-  // const [number, setNumber] = useState(() => 0);
+  const [todo, dispatch] = useReducer(reducer, []);
+  const [name, setName] = useState(() => '');
 
-  function increment() {
-    // setNumber(prev => prev + 1);
-    dispatch({ type: ACTIONS.INCREMENT })
+  function handleSubmit(e) {
+    e.preventDefault();
+    dispatch({ type: ACTIONS.ADD_TODO, payload: { name } })
+    setName('')
   }
 
-  function decrement() {
-    // setNumber(prev => prev - 1);
-    dispatch({ type: ACTIONS.DECREMENT })
-    // dispatch function sended a action to the reducer take care part of applications
+  function toggle(list) {
+    console.log('list', list)
+    dispatch({ type: ACTIONS.TOGGLE_TODO, payload: list })
+
   }
+
+  function deleteItem(list) {
+    console.log('list', list)
+    dispatch({ type: ACTIONS.DELETE_TODO, payload: list })
+  }
+
   return (
     <div>
-      <button onClick={increment}>+</button>
-      <span>{state.count}</span>
-      <button onClick={decrement}>-</button>
+      <form onSubmit={handleSubmit}>
+        <input type='text' value={name} onChange={e => setName(e.currentTarget.value)} />
+      </form>
+      <div>
+        <ul>
+          {
+            todo.map((lit) => <li style={{ color: lit.completed ? 'red' : 'black' }} key={lit.id}>
+
+              <span>{lit.name}</span>
+              <button onClick={() => toggle(lit)} >toggle</button>
+              <button onClick={() => deleteItem(lit)}>delete</button>
+            </li>)
+          }
+        </ul>
+      </div>
     </div>
   );
 }
