@@ -1,4 +1,4 @@
-import { useMemo, useDeferredValue } from "react";
+import { useMemo, useDeferredValue, useEffect } from "react";
 
 
 export function List({ input }) {
@@ -20,6 +20,11 @@ export function List({ input }) {
         }
         return l;
     }, [inputDeferred])
+
+    useEffect(() => {
+        console.log(`input ${input} Deferred value ${inputDeferred}`)
+    }, [input, inputDeferred])
+
     return (
         <ul>{
             list.map((li, i) => <li key={i}>{li}</li>)
