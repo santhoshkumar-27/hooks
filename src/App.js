@@ -1,26 +1,26 @@
 import './App.css';
-import React, { useState, useTransition } from 'react';
-
+import React, { useState } from 'react';
+import { List } from './Lists';
 
 function App() {
-  const [isPending, startTansistions] = useTransition();
+  // const [isPending, startTansistions] = useTransition();
   const [state, setState] = useState(() => '');
-  const [list, setList] = useState(() => []);
-  const list_size = 2000;
+  // const [list, setList] = useState(() => []);
+  // const list_size = 2000;
 
   function onChange(value) {
-    setList([])
+    // setList([])
 
     setState(value)
 
-    startTansistions(() => {
-      let l = [];
-      for (let i = 1; i < list_size; i++) {
-        l.push(value);
-      }
+    // startTansistions(() => {
+    //   let l = [];
+    //   for (let i = 1; i < list_size; i++) {
+    //     l.push(value);
+    //   }
   
-      setList(l)
-    })
+    //   setList(l)
+    // })
   }
 
   // updated state called all combined once so they can wait for all the setupdated to compledted,
@@ -28,11 +28,12 @@ function App() {
   return (
     <div>
       <input type="text" name="sdfasf" id="asdf" value={state} onChange={(e) => onChange(e.target.value)} />
-      <div>
+      {/* <div>
         <ul>{
             isPending ? 'New list loading' :list.map((li, i) => <li key={i}>{li}</li>)
           }</ul>
-      </div>
+      </div> */}
+      <List input={state}/>
     </div>
   );
 }
