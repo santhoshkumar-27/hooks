@@ -1,39 +1,32 @@
 import './App.css';
-import React, { useState } from 'react';
-import { List } from './Lists';
+import React, { useEffect, useRef, useState } from 'react';
 
 function App() {
-  // const [isPending, startTansistions] = useTransition();
-  const [state, setState] = useState(() => '');
-  // const [list, setList] = useState(() => []);
-  // const list_size = 2000;
+  const [show, setShow] = useState(() => false);
+  const button = useRef();
+  const popup = useRef();
 
-  function onChange(value) {
-    // setList([])
+  useEffect(() => {
+    if (button.current === null || popup.current === null) return;
+    const { bottom } = button.current.getBoundingClientRect();
+    console.log('popup', popup);
+  }, [show])
 
-    setState(value)
 
-    // startTansistions(() => {
-    //   let l = [];
-    //   for (let i = 1; i < list_size; i++) {
-    //     l.push(value);
-    //   }
-  
-    //   setList(l)
-    // })
-  }
-
-  // updated state called all combined once so they can wait for all the setupdated to compledted,
-  // by default all the state updated has the high priority so all the set updated take at one time and doing re render the view
+  // useEffect does asynchronous when react calculating dom node and painted into the dom and it runs
+  // it runs after the dom renders
   return (
     <div>
-      <input type="text" name="sdfasf" id="asdf" value={state} onChange={(e) => onChange(e.target.value)} />
-      {/* <div>
-        <ul>{
-            isPending ? 'New list loading' :list.map((li, i) => <li key={i}>{li}</li>)
-          }</ul>
-      </div> */}
-      <List input={state}/>
+      <button ref={button} onClick={() => setShow(prev => !prev)}>{show ? 'Hide' : 'Show'} Popun</button>
+      <div>
+        {
+          show && (
+            <div style={{ position: 'absolute' }} ref={popup}>
+              this is pop
+            </div>
+          )
+        }
+      </div>
     </div>
   );
 }
