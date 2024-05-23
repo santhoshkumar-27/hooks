@@ -1,16 +1,16 @@
 import './App.css';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 function App() {
   const [show, setShow] = useState(() => false);
   const button = useRef();
   const popup = useRef();
 
-  useEffect(() => {
-    if (button.current === null || popup.current === null) return;
+  useLayoutEffect(() => {
+    if ( !button.current || !popup.current ) return;
     const { bottom } = button.current.getBoundingClientRect();
     console.log('popup', popup, bottom);
-    console.log(popup.current.style.bottom)
+    // console.log(popup.current.style.bottom)
     popup.current.style.top = bottom + 25 +'px'
   }, [show])
 
