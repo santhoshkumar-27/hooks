@@ -1,39 +1,51 @@
 import './App.css';
 import React, { useState } from 'react';
-import { List } from './Lists';
 
 function App() {
-  // const [isPending, startTansistions] = useTransition();
-  const [state, setState] = useState(() => '');
-  // const [list, setList] = useState(() => []);
-  // const list_size = 2000;
+  // Define state variables for first name and last name
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
 
-  function onChange(value) {
-    // setList([])
+  // Event handler for changing the first name
+  const handleFirstNameChange = (event) => {
+    setFirstName(event.target.value);
+  };
 
-    setState(value)
+  // Event handler for changing the last name
+  const handleLastNameChange = (event) => {
+    setLastName(event.target.value);
+  };
 
-    // startTansistions(() => {
-    //   let l = [];
-    //   for (let i = 1; i < list_size; i++) {
-    //     l.push(value);
-    //   }
-  
-    //   setList(l)
-    // })
-  }
+  // useDebbugValue works only inside the custom hooks
 
-  // updated state called all combined once so they can wait for all the setupdated to compledted,
-  // by default all the state updated has the high priority so all the set updated take at one time and doing re render the view
+  // JSX for the component
   return (
     <div>
-      <input type="text" name="sdfasf" id="asdf" value={state} onChange={(e) => onChange(e.target.value)} />
-      {/* <div>
-        <ul>{
-            isPending ? 'New list loading' :list.map((li, i) => <li key={i}>{li}</li>)
-          }</ul>
-      </div> */}
-      <List input={state}/>
+      <form>
+        <div>
+          <label>
+            First Name:
+            <input
+              type="text"
+              value={firstName}
+              onChange={handleFirstNameChange}
+            />
+          </label>
+        </div>
+        <div>
+          <label>
+            Last Name:
+            <input
+              type="text"
+              value={lastName}
+              onChange={handleLastNameChange}
+            />
+          </label>
+        </div>
+      </form>
+      <h2>Current State:</h2>
+      <p>First Name: {firstName}</p>
+      <p>Last Name: {lastName}</p>
     </div>
   );
 }
