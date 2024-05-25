@@ -1,11 +1,13 @@
 import './App.css';
 import React, { useState } from 'react';
 import useLocalStorage from './useLocalStorage';
+import useLoggerValue from './useLoggerValue';
 
 function App() {
   // Define state variables for first name and last name
   const [firstName, setFirstName] = useLocalStorage('firstName', '');
 
+  useLoggerValue(firstName);
   // Event handler for changing the first name
   const handleFirstNameChange = (event) => {
     setFirstName(event.target.value);

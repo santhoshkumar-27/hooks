@@ -10,12 +10,16 @@ function getLocalStorage(key, initialValue) {
     return initialValue;
 }
 
+/**
+ * @description use to store and retrive the data store in the localStorage
+*/
 export default function useLocalStorage(key, initialValue) {
     const [value, setValue] = useState(() => getLocalStorage(key, initialValue));
 
 
     useEffect(() => {
         localStorage.setItem(key, JSON.stringify(value))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [value])
 
 
