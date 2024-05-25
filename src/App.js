@@ -1,15 +1,17 @@
 import './App.css';
-import React, { useRef, useState } from 'react';
-import Simplet from './Simplet';
-import ModelFocuse from './ModelFocuse';
-
+import React from 'react';
+import { EmailFrom } from './EmailFrom'
 function App() {
 
   // JSX for the component
   return (
     <div>
-      <Simplet  />
-      <ModelFocuse />
+      <EmailFrom />
+      <div>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum nesciunt corrupti vitae aliquam aperiam. Quis in laudantium sunt nihil perspiciatis labore asperiores. Error commodi, ut nulla odit aliquam eaque quos.
+      </div>
+      <EmailFrom />
+
     </div>
   );
 }
