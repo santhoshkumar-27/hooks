@@ -19,3 +19,5 @@ function CustomInput({ style, ...props }, ref) {
 }
 
 export default React.forwardRef(CustomInput);
+// during forwardref, the component we need to provide to ref as another parameter
+// ref takes from parent ref and pass to the child ref
