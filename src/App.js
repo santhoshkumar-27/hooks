@@ -17,9 +17,9 @@ function App() {
   // JSX for the component
   return (
     <div>
-      <CustomInput ref={input} value={firstName} onChange={(e) => handleFirstNameChange(e)} />
+      <input ref={input} value={firstName} onChange={(e) => handleFirstNameChange(e)} />
       <br />
-      <button>Focus</button>
+      <button onClick={() => input.current.focus()}>Focus</button>
     </div>
   );
 }
