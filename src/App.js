@@ -1,20 +1,16 @@
 import './App.css';
 import React, { useState } from 'react';
+import useLocalStorage from './useLocalStorage';
 
 function App() {
   // Define state variables for first name and last name
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+  const [firstName, setFirstName] = useLocalStorage('firstName', '');
 
   // Event handler for changing the first name
   const handleFirstNameChange = (event) => {
     setFirstName(event.target.value);
   };
 
-  // Event handler for changing the last name
-  const handleLastNameChange = (event) => {
-    setLastName(event.target.value);
-  };
 
   // useDebbugValue works only inside the custom hooks
 
@@ -32,20 +28,9 @@ function App() {
             />
           </label>
         </div>
-        <div>
-          <label>
-            Last Name:
-            <input
-              type="text"
-              value={lastName}
-              onChange={handleLastNameChange}
-            />
-          </label>
-        </div>
       </form>
       <h2>Current State:</h2>
       <p>First Name: {firstName}</p>
-      <p>Last Name: {lastName}</p>
     </div>
   );
 }
