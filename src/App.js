@@ -18,7 +18,8 @@ function App() {
     <div>
       <CustomInput ref={input} value={firstName} onChange={(e) => handleFirstNameChange(e)} />
       <br />
-      <button onClick={() => input.current.focus()}>Focus</button>
+      <button onClick={() => input.current.alert()}>Focus</button>
+      {/* trigger custom function from the parent */}
     </div>
   );
 }
