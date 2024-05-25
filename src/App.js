@@ -2,6 +2,7 @@ import './App.css';
 import React, { useState } from 'react';
 import useLocalStorage from './customhooks/useLocalStorage';
 import useLoggerValue from './customhooks/useLoggerValue';
+import Toggle from './components/Toggle';
 
 function App() {
   // Define state variables for first name and last name
@@ -33,6 +34,10 @@ function App() {
       </form>
       <h2>Current State:</h2>
       <p>First Name: {firstName}</p>
+
+      <div>
+        <Toggle />
+      </div>
     </div>
   );
 }
