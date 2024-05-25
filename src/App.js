@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useState } from 'react';
-import useLocalStorage from './useLocalStorage';
-import useLoggerValue from './useLoggerValue';
+import useLocalStorage from './customhooks/useLocalStorage';
+import useLoggerValue from './customhooks/useLoggerValue';
 
 function App() {
   // Define state variables for first name and last name
