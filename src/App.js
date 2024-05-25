@@ -1,6 +1,7 @@
 import './App.css';
 import React, { useRef, useState } from 'react';
 import Simplet from './Simplet';
+import ModelFocuse from './ModelFocuse';
 
 function App() {
 
@@ -8,7 +9,7 @@ function App() {
   return (
     <div>
       <Simplet  />
-
+      <ModelFocuse />
     </div>
   );
 }
