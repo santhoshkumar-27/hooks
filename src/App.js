@@ -1,11 +1,11 @@
 import './App.css';
-import React, { useState } from 'react';
-import useLocalStorage from './useLocalStorage';
+import React, { useRef, useState } from 'react';
+import CustomInput from './CustomInput';
 
 function App() {
   // Define state variables for first name and last name
-  const [firstName, setFirstName] = useLocalStorage('firstName', '');
-
+  const [firstName, setFirstName] = useState('firstName', '');
+  const input = useRef();
   // Event handler for changing the first name
   const handleFirstNameChange = (event) => {
     setFirstName(event.target.value);
@@ -17,20 +17,9 @@ function App() {
   // JSX for the component
   return (
     <div>
-      <form>
-        <div>
-          <label>
-            First Name:
-            <input
-              type="text"
-              value={firstName}
-              onChange={handleFirstNameChange}
-            />
-          </label>
-        </div>
-      </form>
-      <h2>Current State:</h2>
-      <p>First Name: {firstName}</p>
+      <CustomInput ref={input} value={firstName} onChange={(e) => handleFirstNameChange(e)} />
+      <br />
+      <button>Focus</button>
     </div>
   );
 }
