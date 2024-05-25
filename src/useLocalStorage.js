@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useDebugValue, useEffect, useState } from "react";
 
 function getLocalStorage(key, initialValue) {
     const savedValue = JSON.parse(localStorage.getItem(key));
@@ -22,6 +22,13 @@ export default function useLocalStorage(key, initialValue) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [value])
 
+
+    // useDebbugValue works only inside the custom hooks
+
+    useDebugValue(value) // show the value in the label next to the custom hook name
+    // it available for development and production
+
+    // to show the state of this hook
 
     return [value, setValue]
 }
