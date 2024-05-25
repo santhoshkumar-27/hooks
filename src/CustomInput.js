@@ -1,8 +1,9 @@
 import React from 'react'
 
-function CustomInput({ style, ...props }) {
+function CustomInput({ style, ...props }, ref) {
     return (
         <input
+            ref={ref}
             {...props}
             style={{
                 border: "none",
