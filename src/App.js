@@ -5,6 +5,7 @@ import useLoggerValue from './customhooks/useLoggerValue';
 import Toggle from './components/Toggle';
 import TimeComponent from './components/TimeComponent';
 import DebounceComponent from './components/DebounceComponent';
+import UpdateEffectComponent from './components/UpdateEffectComponent';
 
 function App() {
   // Define state variables for first name and last name
@@ -41,6 +42,7 @@ function App() {
         <Toggle />
         <TimeComponent />
         <DebounceComponent />
+        <UpdateEffectComponent />
       </div>
     </div>
   );
