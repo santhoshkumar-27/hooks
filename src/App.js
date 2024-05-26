@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import useLocalStorage from './customhooks/useLocalStorage';
 import useLoggerValue from './customhooks/useLoggerValue';
 import Toggle from './components/Toggle';
+import TimeComponent from './components/TimeComponent';
 
 function App() {
   // Define state variables for first name and last name
@@ -37,6 +38,7 @@ function App() {
 
       <div>
         <Toggle />
+        <TimeComponent />
       </div>
     </div>
   );
