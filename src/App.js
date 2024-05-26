@@ -39,10 +39,10 @@ function App() {
       <p>First Name: {firstName}</p>
 
       <div>
-        <Toggle />
+        {/* <Toggle />
         <TimeComponent />
         <DebounceComponent />
-        <UpdateEffectComponent />
+        <UpdateEffectComponent /> */}
       </div>
     </div>
   );
